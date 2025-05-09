@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const metadata: Metadata = {
   title: "EGOAI - The AI That Roasts You",
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const router = useRouter();
+
   const roastFeed = [
     {
       wallet: "0x7f3...2d4",
@@ -53,10 +56,8 @@ export default function Home() {
             </div>
             <div className="flex space-x-8">
               {[
-                { name: "GitBook", href: "#" },
-                { name: "Documentation", href: "#" },
-                { name: "Twitter", href: "#" },
-                { name: "Token Explorer", href: "#" },
+                { name: "Documentation", href: "https://egoai.gitbook.io/egoai/" },
+                { name: "Twitter", href: "https://x.com/infect_ai" },
               ].map((item) => (
                 <Link
                   key={item.name}
@@ -79,7 +80,10 @@ export default function Home() {
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 mb-12">The more you hold, the worse the roast.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg transition-colors font-medium shadow-lg shadow-purple-500/20">
+            <button
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg transition-colors font-medium shadow-lg shadow-purple-500/20"
+              onClick={() => router.push("https://egoai.gitbook.io/egoai/")}
+            >
               Read the Whitepaper
             </button>
             <button className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-lg transition-colors font-medium border border-gray-700">
